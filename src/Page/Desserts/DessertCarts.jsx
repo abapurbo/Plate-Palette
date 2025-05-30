@@ -6,13 +6,13 @@ const DessertCarts = () => {
     const items = useLoaderData()
     console.log(items)
     return (
-        <div className='md:grid gap-10 md:grid-cols-10  mt-10'>
+        <div className='md:grid gap-10 md:grid-cols-10 space-y-7  mt-10'>
             <div className='col-span-7 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 '>
                 {
                     items.map((item, index) => <DessertCart key={index} item={item}></DessertCart>)
                 }
             </div>
-            <div className='md:col-span-3  h-100 bg-[#feeafa]'>
+            <div className='md:col-span-3  h-100 bg-[#FFFFFF] rounded-2xl'>
 
             </div>
 
