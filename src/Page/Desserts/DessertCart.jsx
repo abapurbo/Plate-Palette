@@ -1,19 +1,28 @@
-import React from 'react';
 import { MdAddShoppingCart } from 'react-icons/md';
+import useAuth from '../../Auth/useAuth/useAuth';
+// import AuthContext from '../../Auth/AuthContext/AuthContext';
 
 const DessertCart = ({ item }) => {
-    const desktop = item.image.desktop;
-    const tablet=item.image.tablet;
-    const mobile=item.image.mobile;
+    const { insertDessertCart } = useAuth()
+  
+    const handleAddDessertItem = categoryName => {
+        insertDessertCart(categoryName)
+        alert('Your dessert add localStorage')
+    }
     return (
         <div className="card bg-[##F5EDEB]  shadow-sm">
             <figure>
-                <img src={item.image.desktop} />
+                <picture>
+                    <source srcSet={item.image.desktop} media='(min-width: 1024px)'></source>
+                    <source srcSet={item.image.tablet} media='(min-width: 768px)'></source>
+                    <source srcSet={item.image.mobile} media='(max-width: 767px)'></source>
+                    <img src={item.image.thumbnail} alt="thumbnail image" />
+                </picture>
             </figure>
             <div className="card-body space-y-3">
                 <div className='relative'>
                     <div className="card-actions absolute left-[50%] right-[50%] bottom-2 justify-center">
-                        <button className="text-[16px] font-bold px-4 py-2 btn rounded-4xl outline-2 outline-red-500"><MdAddShoppingCart className='text-xl'></MdAddShoppingCart> Add to Cart</button>
+                        <button onClick={() => handleAddDessertItem(item.category)} className="text-[16px] font-bold px-4 py-2 btn rounded-4xl outline-2 outline-red-700"><MdAddShoppingCart className='text-xl'></MdAddShoppingCart> Add to Cart</button>
                     </div>
                 </div>
 
